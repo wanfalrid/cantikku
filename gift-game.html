@@ -1,0 +1,126 @@
+I LOVE YOU♥
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gift Game</title>
+    <style>
+      body {
+        background-color: #ffd1dc;
+        text-align: center;
+        font-family: "Bubblegum Sans", cursive;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      h1 {
+        font-size: 36px;
+        color: #d2042d;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-gap: 20px;
+        max-width: 800px;
+      }
+      .gift-box {
+        font-size: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .message {
+        font-size: 18px;
+        color: #d2042d;
+        text-align: center;
+        display: none;
+        background: white;
+        padding: 10px;
+        width: 150px;
+        border-radius: 10px;
+      }
+      .next-page-button {
+        margin-top: 30px;
+        padding: 10px 20px;
+        font-size: 20px;
+        color: white;
+        background-color: #d2042d;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .next-page-button:hover {
+        background-color: #b00226;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Click on the Gift to Open! ❤️</h1>
+    <div class="grid-container" id="gift-container"></div>
+    <button
+      class="next-page-button"
+      onclick="window.location.href='flower-page.html'"
+    >
+      Next →
+    </button>
+
+    <script>
+      const messages = [
+        "Kamu cewek paling cantik di hidupku ❤️",
+        "Kamu cewek tercantik yang aku kenal, aku kagum sama kamu ❤️",
+        "Kamu gak pernah nyerah, aku bangget sama kamu ❤️",
+        "Kamu selalu berusaha keras, aku suka banget itu ❤️",
+        "Kamu gak sendirian, aku selalu ada buat kamu ❤️",
+        "Peluk dan cium ❤️",
+        "Kamu segalanya buat aku ❤️",
+        "Gak ada yang bisa gantiin posisi kamu ❤️",
+        "Aku suka semua yang ada di diri kamu ❤️",
+        "Kamu cewek cantik kesayanganku ❤️",
+        "KAMU ITU CEWEK IMPIANKU BENERANNN ❤️",
+        "AKU SAYANG BANGET SAMA KAMUUU SAYANGGG ❤️",
+      ];
+
+      function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+      }
+      shuffleArray(messages);
+
+      const giftContainer = document.getElementById("gift-container");
+
+      function createGift(index) {
+        let wrapper = document.createElement("div");
+        wrapper.style.display = "flex";
+        wrapper.style.flexDirection = "column";
+        wrapper.style.alignItems = "center";
+
+        let gift = document.createElement("div");
+        gift.classList.add("gift-box");
+        gift.textContent = "🎁";
+
+        let message = document.createElement("div");
+        message.classList.add("message");
+        message.textContent = messages[index];
+
+        gift.onclick = function () {
+          gift.style.display = "none";
+          message.style.display = "block";
+        };
+
+        wrapper.appendChild(gift);
+        wrapper.appendChild(message);
+        giftContainer.appendChild(wrapper);
+      }
+
+      for (let i = 0; i < messages.length; i++) {
+        createGift(i);
+      }
+    </script>
+  </body>
+</html>

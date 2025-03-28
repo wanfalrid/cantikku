@@ -1,0 +1,166 @@
+I LOVE YOU♥
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Your Experience</title>
+    <style>
+        body {
+            background-image: url('https://media.giphy.com/media/LHZyixOnHwDDy/giphy.gif?cid=790b7611sjy3irszva3b2n9htwgrwwc4y3fk2dcavn6nqxmx&ep=v1_gifs_search&rid=giphy.gif&ct=g');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #FFFFFF;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            font-family: 'Fredoka One', cursive;
+            color: black;
+        }
+        .title {
+            font-size: 40px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .rating-container {
+            display: flex;
+            gap: 10px;
+            font-size: 24px;
+        }
+        .rating-container input {
+            display: none;
+        }
+        .rating-container label {
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: white; color: black;
+            transition: background-color 0.3s;
+        }
+        .rating-container input:checked + label {
+            background-color: black;
+            color: white;
+        }
+        .submit-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .submit-button:hover {
+            background-color: black;
+        }
+        .gif-container {
+            margin-top: 20px;
+        }
+        .gif-container img {
+            width: 250px;
+            height: auto;
+            display: none;
+        }
+            .restart-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .restart-button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">Rate Your Experience! 🌟</div>
+    <div class="rating-container">
+        <input type="radio" id="rate1" name="rating" value="1"><label for="rate1">1</label>
+        <input type="radio" id="rate2" name="rating" value="2"><label for="rate2">2</label>
+        <input type="radio" id="rate3" name="rating" value="3"><label for="rate3">3</label>
+        <input type="radio" id="rate4" name="rating" value="4"><label for="rate4">4</label>
+        <input type="radio" id="rate5" name="rating" value="5"><label for="rate5">5</label>
+        <input type="radio" id="rate6" name="rating" value="6"><label for="rate6">6</label>
+        <input type="radio" id="rate7" name="rating" value="7"><label for="rate7">7</label>
+        <input type="radio" id="rate8" name="rating" value="8"><label for="rate8">8</label>
+        <input type="radio" id="rate9" name="rating" value="9"><label for="rate9">9</label>
+        <input type="radio" id="rate10" name="rating" value="10"><label for="rate10">10</label>
+    </div>
+    <button class="submit-button" onclick="submitRating()">Submit</button>
+    <div class="gif-container">
+        <img id="rating-gif" src="" alt="Reaction GIF">
+    </div>
+    <script>
+        function submitRating() {
+            const rating = document.querySelector('input[name="rating"]:checked');
+            const gif = document.getElementById("rating-gif");
+            
+            if (rating) {
+                let gifUrl = "";
+                if (rating.value == 1) {
+                    gifUrl = "https://media.giphy.com/media/1qYhmhwLTM0NEEms17/giphy.gif?cid=790b7611euhlafaqv8f86u37b24z7kqdpwcroqubzfpi0k6p&ep=v1_gifs_search&rid=giphy.gif&ct=g"; // Very sad reaction
+                } else if (rating.value <= 3) {
+                    gifUrl = "https://media.giphy.com/media/GwskZm1jXg8cDvuZJ6/giphy.gif?cid=790b7611cix2ulh6vw3p9kif8oethjeenyp6q8ly8jkyax4u&ep=v1_gifs_search&rid=giphy.gif&ct=g"; // Sad reaction
+                } else if (rating.value <= 7) {
+                    gifUrl = "https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExdm5jOTBqczBweG54ZTA0NWh4YWFkdjRudno5dTEzeTBvdWxybXExOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/M9yC8b0x7Y7oA/giphy.gif"; // Neutral reaction
+                } else {
+                    gifUrl = "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHhyOG5nb2QwdjBrZXNmdmV1aGRmM3pyaWs5NHoya2d6d215Mm9jdyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/yFQ0ywscgobJK/giphy.gif"; // Happy reaction
+                }
+                
+                gif.src = gifUrl;
+                gif.style.display = "block";
+            } else {
+                alert("Please select a rating before submitting.");
+            }
+        }
+    </script>
+    <div style="margin-top: 20px; font-size: 20px; color: black; font-family: 'Fredoka One', cursive;">
+        Made by Cherishma, hope you liked it (˶˃ ᵕ ˂˶)
+    </div>
+    <audio id="bg-music" loop>
+        <source src="https://www.dropbox.com/scl/fi/g2xh1ds6gmmzs2w5lmjj1/WhatsApp-Video-2025-02-20-at-03.11.56_14cd4b90.mp3?rlkey=lrdoh8u670yv0zkxw6n5vcc07&st=c2qdzqvv&raw=1" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <button id="mute-button" onclick="toggleMusic()">🔇</button>
+    <script>
+        function toggleMusic() {
+            const music = document.getElementById("bg-music");
+            const button = document.getElementById("mute-button");
+            if (music.paused) {
+                music.play();
+                button.textContent = "🔊";
+            } else {
+                music.pause();
+                button.textContent = "🔇";
+            }
+        }
+    </script>
+    <style>
+        #mute-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px;
+            font-size: 18px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        #mute-button:hover {
+            background-color: #333;
+        }
+    </style>
+    <button class="restart-button" onclick="window.location.href='love-message.html'">Restart 🔄</button>
+</body>
+</html>

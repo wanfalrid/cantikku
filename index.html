@@ -1,0 +1,183 @@
+<i LOVE YOU♥ !DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>For My Love</title>
+      <link rel="stylesheet" href="styles.css" />
+      <script defer src="script.js"></script>
+      <style>
+        @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+        body {
+          background-color: #ffe6f2;
+          background-image: linear-gradient(white 1px, transparent 1px),
+            linear-gradient(90deg, white 1px, transparent 1px);
+          background-size: 40px 40px;
+          height: 100vh;
+          overflow: hidden;
+          position: relative;
+          padding: 10px;
+          text-align: center;
+        }
+        .love-message {
+          position: absolute;
+          font-family: "Bubblegum Sans", cursive;
+          font-size: 16px;
+          color: #ff4d6d;
+          text-align: center;
+          opacity: 0;
+          width: 160px;
+          word-wrap: break-word;
+          will-change: transform, opacity;
+          animation: float 3s infinite ease-in-out;
+        }
+        .bounce-gif {
+          width: 150px;
+          height: auto;
+          display: block;
+          margin: 5px auto 0 auto;
+          will-change: transform;
+          animation: float 3s infinite ease-in-out;
+        }
+        .gift-button {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          padding: 15px 25px;
+          font-size: 20px;
+          background: #ff4d6d;
+          color: white;
+          border: none;
+          border-radius: 12px;
+          cursor: pointer;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+          transition: 0.3s;
+          z-index: 10;
+        }
+        .gift-button:hover {
+          box-shadow: 0 0 15px #ff4d6d;
+          transform: translate(-50%, -50%) scale(1.1);
+        }
+        @keyframes float {
+          0% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-15px);
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        .music-button {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background: #ff4d6d;
+          color: white;
+          border: none;
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+          font-size: 16px;
+          cursor: pointer;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+      </style>
+    </head>
+    <body>
+      <audio id="bg-music" loop>
+        <source
+          src="https://www.dropbox.com/scl/fi/g2xh1ds6gmmzs2w5lmjj1/WhatsApp-Video-2025-02-20-at-03.11.56_14cd4b90.mp3?rlkey=lrdoh8u670yv0zkxw6n5vcc07&st=1kewars1&raw=1"
+          type="audio/mp3"
+        />
+      </audio>
+      <button class="music-button" onclick="toggleMusic()">🔊</button>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const messages = ["I Love You❤️", "You are mine 💕", "IYLSM 💖"];
+          const numMessages = 20;
+          let placedPositions = [];
+          const minDistance = 150;
+
+          function isOverlapping(x, y) {
+            for (let pos of placedPositions) {
+              let dx = pos.x - x;
+              let dy = pos.y - y;
+              let distance = Math.sqrt(dx * dx + dy * dy);
+              if (distance < minDistance) {
+                return true;
+              }
+            }
+            return false;
+          }
+
+          function getPosition() {
+            let x, y;
+            for (let i = 0; i < 100; i++) {
+              x = Math.random() * (window.innerWidth - 180);
+              y = Math.random() * (window.innerHeight - 180);
+              if (!isOverlapping(x, y)) {
+                placedPositions.push({ x, y });
+                return { x, y };
+              }
+            }
+            return {
+              x: Math.random() * (window.innerWidth - 180),
+              y: Math.random() * (window.innerHeight - 180),
+            };
+          }
+
+          function showMessages(index) {
+            if (index >= numMessages) return;
+            let { x, y } = getPosition();
+            let div = document.createElement("div");
+            div.classList.add("love-message");
+            div.style.top = y + "px";
+            div.style.left = x + "px";
+            div.innerHTML = `<h1>${
+              messages[Math.floor(Math.random() * messages.length)]
+            }</h1>
+                                 <img src="https://media4.giphy.com/media/3oz8xsaLjLVqVXr3tS/giphy.gif" alt="Cute Cat GIF" class="bounce-gif">`;
+            document.body.appendChild(div);
+            setTimeout(() => {
+              div.style.opacity = 1;
+              div.style.animation += ", fadeIn 0.8s ease-in forwards";
+            }, 200 * index);
+            setTimeout(() => showMessages(index + 1), 200);
+          }
+
+          showMessages(0);
+        });
+
+        function toggleMusic() {
+          let music = document.getElementById("bg-music");
+          let button = document.querySelector(".music-button");
+          if (music.paused) {
+            music.play();
+            button.textContent = "🔇";
+          } else {
+            music.pause();
+            button.textContent = "🔊";
+          }
+        }
+      </script>
+
+      <button
+        class="gift-button"
+        onclick="window.location.href='gift-game.html'"
+      >
+        Buka Hadiah 🎁
+      </button>
+    </body>
+  </html>
+</i>
